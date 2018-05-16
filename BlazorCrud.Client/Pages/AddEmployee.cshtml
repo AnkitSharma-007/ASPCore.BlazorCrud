@@ -1,0 +1,52 @@
+﻿@using BlazorCrud.Shared.Models
+@page "/addemployee"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+<h1>Create</h1>
+<h3>Employee</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="Name" class="control-label">Name</label>
+                <input for="Name" class="form-control" bind="@emp.Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label">Gender</label>
+                <select asp-for="Gender" class="form-control" bind="emp.Gender">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Department" class="control-label">Department</label>
+                <input asp-for="Department" class="form-control" bind="emp.Department" />
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label">City</label>
+                <input asp-for="City" class="form-control" bind="emp.City" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default" onclick="@(async () => await CreateEmployee())">Save</button>
+                <button class="btn" onclick="@cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+@functions {
+
+    Employee emp = new Employee();
+
+    protected async Task CreateEmployee()
+    {
+        await Http.SendJsonAsync(HttpMethod.Post, "/api/Employee/Create", emp);
+        UriHelper.NavigateTo("/fetchemployee");
+    }
+
+    void cancel()
+    {
+        UriHelper.NavigateTo("/fetchemployee");
+    }
+}

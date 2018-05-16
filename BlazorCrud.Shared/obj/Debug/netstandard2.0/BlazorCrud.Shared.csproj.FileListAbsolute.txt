@@ -1,0 +1,12 @@
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\BlazorCrud.Shared.deps.json
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\BlazorCrud.Shared.dll
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\BlazorCrud.Shared.pdb
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.csprojAssemblyReference.cache
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.csproj.CoreCompileInputs.cache
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.AssemblyInfoInputs.cache
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.AssemblyInfo.cs
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.csproj.CopyComplete
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.dll
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\obj\Debug\netstandard2.0\BlazorCrud.Shared.pdb

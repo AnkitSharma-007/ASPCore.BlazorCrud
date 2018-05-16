@@ -1,0 +1,6 @@
+C:\Users\asharma2\.nuget\packages\microsoft.aspnetcore.blazor\0.3.0\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.dll
+C:\Users\asharma2\.nuget\packages\microsoft.aspnetcore.blazor.browser\0.3.0\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.Browser.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\BlazorCrud.Shared.dll
+c:\users\asharma2\source\repos\BlazorCrud\BlazorCrud.Shared\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll

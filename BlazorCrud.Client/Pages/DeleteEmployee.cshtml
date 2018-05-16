@@ -1,0 +1,59 @@
+﻿@using BlazorCrud.Shared.Models
+@page "/delete/{empID}"
+@inject HttpClient Http
+@inject Microsoft.AspNetCore.Blazor.Services.IUriHelper UriHelper
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete employee with id : @empID</h3>
+<br />
+
+<div class="col-md-4">
+    <table class="table">
+        <tr>
+            <td>Name</td>
+            <td>@emp.Name</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>@emp.Gender</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>@emp.Department</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>@emp.City</td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Delete" onclick="@(async () => await Delete())" class="btn btn-default" />
+        <input type="submit" value="Cancel" onclick="@cancel" class="btn" />
+    </div>
+</div>
+
+@functions {
+
+[Parameter]
+string empID { get; set; }
+
+Employee emp = new Employee();
+
+protected override async Task OnInitAsync()
+{
+    emp = await Http.GetJsonAsync<Employee>
+    ("/api/Employee/Details/" + Convert.ToInt32(empID));
+}
+
+protected async Task Delete()
+{
+    await Http.DeleteAsync("api/Employee/Delete/" + Convert.ToInt32(empID));
+    UriHelper.NavigateTo("/fetchemployee");
+}
+
+void cancel()
+{
+    UriHelper.NavigateTo("/fetchemployee");
+}
+
+}
