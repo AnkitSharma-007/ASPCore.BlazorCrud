@@ -1,0 +1,7 @@
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\bin\Debug\netstandard2.1\BlazorCrud.Shared.deps.json
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\bin\Debug\netstandard2.1\BlazorCrud.Shared.dll
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\bin\Debug\netstandard2.1\BlazorCrud.Shared.pdb
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\obj\Debug\netstandard2.1\BlazorCrud.Shared.AssemblyInfoInputs.cache
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\obj\Debug\netstandard2.1\BlazorCrud.Shared.AssemblyInfo.cs
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\obj\Debug\netstandard2.1\BlazorCrud.Shared.dll
+E:\Projects\BlazorUpdates\ASPCore.BlazorCrud\BlazorCrud\BlazorCrud\Shared\obj\Debug\netstandard2.1\BlazorCrud.Shared.pdb
