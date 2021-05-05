@@ -1,23 +1,26 @@
 ﻿using BlazorCrud.Server.Interfaces;
-using BlazorCrud.Shared.Models;
+using BlazorCrud.Server.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorCrud.Server.DataAccess
 {
-    public class EmployeeDataAccessLayer: IEmployee
+    public class EmployeeDataAccessLayer : IEmployee
     {
-        EmployeeContext db = new EmployeeContext();
+        EmployeeDBContext _dbContext = new();
+
+        public EmployeeDataAccessLayer(EmployeeDBContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         //To Get all employees details   
-        public IEnumerable<Employee> GetAllEmployees()
+        public List<Employee> GetAllEmployees()
         {
             try
             {
-                return db.tblEmployee.ToList();
+                return _dbContext.Employees.ToList();
             }
             catch
             {
@@ -30,8 +33,8 @@ namespace BlazorCrud.Server.DataAccess
         {
             try
             {
-                db.tblEmployee.Add(employee);
-                db.SaveChanges();
+                _dbContext.Employees.Add(employee);
+                _dbContext.SaveChanges();
             }
             catch
             {
@@ -44,8 +47,8 @@ namespace BlazorCrud.Server.DataAccess
         {
             try
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                _dbContext.Entry(employee).State = EntityState.Modified;
+                _dbContext.SaveChanges();
             }
             catch
             {
@@ -58,7 +61,7 @@ namespace BlazorCrud.Server.DataAccess
         {
             try
             {
-                Employee employee = db.tblEmployee.Find(id);
+                Employee employee = _dbContext.Employees.Find(id);
                 return employee;
             }
             catch
@@ -72,9 +75,22 @@ namespace BlazorCrud.Server.DataAccess
         {
             try
             {
-                Employee emp = db.tblEmployee.Find(id);
-                db.tblEmployee.Remove(emp);
-                db.SaveChanges();
+                Employee emp = _dbContext.Employees.Find(id);
+                _dbContext.Employees.Remove(emp);
+                _dbContext.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        // To get the list of Cities
+        public List<City> GetCity()
+        {
+            try
+            {
+                return _dbContext.Cities.ToList();
             }
             catch
             {

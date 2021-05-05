@@ -1,61 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BlazorCrud.Server.Interfaces;
-using BlazorCrud.Shared.Models;
+﻿using BlazorCrud.Server.Interfaces;
+using BlazorCrud.Server.Models;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlazorCrud.Server.Controllers
 {
     [Route("api/[controller]")]
-    public class EmployeeController : Controller
+    [ApiController]
+    public class EmployeeController : ControllerBase
     {
-        private readonly IEmployee objemployee;
+        private readonly IEmployee _employeeService;
 
-        public EmployeeController(IEmployee _objemployee)
+        public EmployeeController(IEmployee employeeService)
         {
-            objemployee = _objemployee;
+            _employeeService = employeeService;
         }
 
         [HttpGet]
-        [Route("Index")]
-        public IEnumerable<Employee> Index()
+        public async Task<List<Employee>> Get()
         {
-            return objemployee.GetAllEmployees();
+            return await Task.FromResult(_employeeService.GetAllEmployees());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            Employee employee = _employeeService.GetEmployeeData(id);
+            if (employee != null)
+            {
+                return Ok(employee);
+            }
+            return NotFound();
         }
 
         [HttpPost]
-        [Route("Create")]
-        public void Create([FromBody] Employee employee)
+        public void Post(Employee employee)
         {
-            if (ModelState.IsValid)
-                objemployee.AddEmployee(employee);
-        }
-
-        [HttpGet]
-        [Route("Details/{id}")]
-        public Employee Details(int id)
-        {
-
-            return objemployee.GetEmployeeData(id);
+            _employeeService.AddEmployee(employee);
         }
 
         [HttpPut]
-        [Route("Edit")]
-        public void Edit([FromBody]Employee employee)
+        public void Put(Employee employee)
         {
-            if (ModelState.IsValid)
-                objemployee.UpdateEmployee(employee);
+            _employeeService.UpdateEmployee(employee);
         }
 
-        [HttpDelete]
-        [Route("Delete/{id}")]
-        public void Delete(int id)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            objemployee.DeleteEmployee(id);
+            _employeeService.DeleteEmployee(id);
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("GetCityList")]
+        public async Task<IEnumerable<City>> CityList()
+        {
+            return await Task.FromResult(_employeeService.GetCity());
         }
     }
 }

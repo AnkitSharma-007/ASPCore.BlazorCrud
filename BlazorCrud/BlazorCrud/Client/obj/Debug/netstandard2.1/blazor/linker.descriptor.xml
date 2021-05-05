@@ -1,5 +1,0 @@
-﻿<linker>
-  <assembly fullname="BlazorCrud.Client">
-    <type fullname="*" required="true" />
-  </assembly>
-</linker>
