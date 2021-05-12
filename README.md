@@ -6,7 +6,7 @@ We will use Visual Studio 2019 and SQL Server 2017.
 
 # Demo
 
-![Alt Text](https://github.com/AnkitSharma-007/ASPCore.BlazorCrud/blob/master/Output/BlazorCRUD.gif)
+![Alt Text](https://github.com/AnkitSharma-007/ASPCore.BlazorCrud/blob/master/Output/BlazorCRUDOutput.gif)
 
 
 # Read the full article
