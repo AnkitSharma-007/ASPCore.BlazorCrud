@@ -17,6 +17,7 @@ namespace BlazorCrud.Client.Pages
         protected List<Employee> searchEmpData = new();
         protected Employee emp = new();
         protected string SearchString { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             await GetEmployee();
@@ -27,6 +28,7 @@ namespace BlazorCrud.Client.Pages
             empList = await Http.GetFromJsonAsync<List<Employee>>("api/Employee");
             searchEmpData = empList;
         }
+
         protected void FilterEmp()
         {
             if (!string.IsNullOrEmpty(SearchString))
@@ -51,6 +53,5 @@ namespace BlazorCrud.Client.Pages
             await Http.DeleteAsync("api/Employee/" + empID);
             await GetEmployee();
         }
-
     }
 }
