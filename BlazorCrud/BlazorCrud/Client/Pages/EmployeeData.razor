@@ -1,0 +1,106 @@
+﻿@page "/fetchemployee"
+@inherits EmployeeDataBase
+
+<h1>Employee Data</h1>
+<p>This component demonstrates CRUD operation on Employee data</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <a href='/employee/add' class="btn btn-primary" role="button">
+            <i class="fas fa-user-plus"></i>
+            Add Employee
+        </a>
+    </div>
+    <div class="input-group col">
+        <input type="text" class="form-control" placeholder="Search employee by name"
+               @bind="SearchString" @bind:event="oninput" @onkeyup="FilterEmp" />
+        @if (SearchString.Length > 0)
+        {
+            <div class="input-group-append">
+                <button class="btn btn-danger" @onclick="ResetSearch">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+<br />
+
+@if (empList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped align-middle table-bordered">
+        <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Department</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in empList)
+            {
+                <tr>
+                    <td>@emp.EmployeeId</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Gender</td>
+                    <td>@emp.Department</td>
+                    <td>@emp.City</td>
+                    <td>
+                        <a href='/employee/edit/@emp.EmployeeId' class="btn btn-outline-dark" role="button">
+                            Edit
+                        </a>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmpModal"
+                        @onclick="(() => DeleteConfirm(emp.EmployeeId))">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="deleteEmpModal" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Delete Employee</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Do you want to delete this employee?</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>@emp.Name</td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>@emp.Gender</td>
+                            </tr>
+                            <tr>
+                                <td>Department</td>
+                                <td>@emp.Department</td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td>@emp.City</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" @onclick="(async () => await DeleteEmployee(emp.EmployeeId))" data-bs-dismiss="modal">YES</button>
+                    <button class="btn btn-warning" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

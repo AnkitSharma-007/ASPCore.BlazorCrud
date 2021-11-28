@@ -1,0 +1,52 @@
+﻿@page "/employee/add"
+@page "/employee/edit/{empID:int}"
+@inherits AddEditEmployeeBase
+
+<h1>@Title Employee</h1>
+<hr />
+
+<EditForm Model="@emp" OnValidSubmit="SaveEmployee">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="emp.Name" />
+        </div>
+        <ValidationMessage For="@(() => emp.Name)" />
+    </div>
+    <div class="mb-3">
+        <label for="Gender" class="form-label">Gender</label>
+        <div class="col-md-4">
+            <InputSelect class="form-control" @bind-Value="emp.Gender">
+                <option value="">-- Select Gender --</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </InputSelect>
+        </div>
+        <ValidationMessage For="@(() => emp.Gender)" />
+    </div>
+    <div class="mb-3">
+        <label for="Department" class="form-label">Department</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="emp.Department" />
+        </div>
+        <ValidationMessage For="@(() => emp.Department)" />
+    </div>
+    <div class="mb-3">
+        <label for="City" class="form-label">City</label>
+        <div class="col-md-4">
+            <InputSelect class="form-control" @bind-Value="emp.City">
+                <option value="-- Select City --">-- Select City --</option>
+                @foreach (var city in cityList)
+                {
+                    <option value="@city.CityName">@city.CityName</option>
+                }
+            </InputSelect>
+        </div>
+        <ValidationMessage For="@(() => emp.City)" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+    </div>
+</EditForm>
